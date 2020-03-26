@@ -158,6 +158,28 @@ class Instructor extends Lambdasian{
     return `${obj.name} recieves a perfect score on ${str}`;
   }
 
+  //STRETCH GOAL
+  gradeTest(obj){
+    let grade = Math.floor(Math.random() * 100);
+    let addOrSub = Math.floor(Math.random() * 2);
+    
+    if(addOrSub === 1){
+      obj.grade = obj.grade += grade;
+      if(obj.grade > 100){
+         obj.grade = 100;
+      }
+    }
+
+    if(addOrSub === 2){
+      obj.grade = obj.grade += grade;
+      if(obj.grade < 1){
+        obj.grade = 1;
+      }
+    }
+
+    return obj.grade;
+  }
+
 }
 
 /*
@@ -181,6 +203,9 @@ class Student extends Lambdasian{
     this.previousBackground = attributes.previousBackground;
     this.className = attributes.className;
     this.favSubjects = attributes.favSubjects;
+
+    //STRETCH GOAL
+    this.grade = attributes.grade;
   }
 
   listSubjects(){
@@ -193,6 +218,13 @@ class Student extends Lambdasian{
 
   sprintChallenge(subject){
     return `${this.name} has begun sprint challenge on ${subject}`;
+  }
+
+  //STRETCH GOAL
+  graduate(){
+    if(this.grade >= 70){
+      return `Congragulations ${this.name}, you have graduated the ${this.className} course!`
+    }
   }
 
 }
